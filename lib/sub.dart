@@ -46,7 +46,7 @@ class _MapsPageState extends State<MapsPage>
 
   void getPloyLinePoints() async {
     const String url =
-        "https://api.mapbox.com/directions/v5/mapbox/driving/73.1268352%2C19.2550777%3B73.12617533208805%2C19.25374496359747?alternatives=false&geometries=geojson&language=en&overview=full&steps=true&access_token=API_KEY";
+        "https://api.mapbox.com/directions/v5/mapbox/driving/73.1268352%2C19.2550777%3B73.12617533208805%2C19.25374496359747?alternatives=false&geometries=geojson&language=en&overview=full&steps=true&access_token=pk.eyJ1IjoiYXlhYW56YXZlcmkiLCJhIjoiY2ttZHVwazJvMm95YzJvcXM3ZTdta21rZSJ9.WMpQsXd5ur2gP8kFjpBo8g";
     var res = await http.get(Uri.parse(url));
 
     if (res.statusCode == 200) {
@@ -110,7 +110,7 @@ class _MapsPageState extends State<MapsPage>
               children: [
                 TileLayer(
                   urlTemplate:
-                      "https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=API_KEY",
+                      "https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYXlhYW56YXZlcmkiLCJhIjoiY2ttZHVwazJvMm95YzJvcXM3ZTdta21rZSJ9.WMpQsXd5ur2gP8kFjpBo8g",
                 ),
                 MarkerLayer(
                   markers: [
@@ -198,7 +198,8 @@ class _MapsPageState extends State<MapsPage>
               right: 20,
               child: FloatingActionButton(
                 onPressed: () {
-                  stack.top().reverse(from: 20);
+                  stack.top().reverse(
+                      from: stack.top().value == 0 ? 1 : stack.top().value);
                   print(stack.top());
                   userMarkers.removeLast();
                   stack.pop();
