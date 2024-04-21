@@ -37,6 +37,7 @@ dependencies:
   flutter_map: ^6.1.0
   latlong2:
   http:
+  animate_do:
 
 dev_dependencies:
   flutter_test:
